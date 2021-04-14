@@ -1,0 +1,13 @@
+.navigationBar {
+    background-color: var(--core-1);
+    flex-grow: 1;
+}
+
+.title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navItem {
+    padding: 0 1%;
+}

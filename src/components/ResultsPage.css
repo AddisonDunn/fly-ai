@@ -1,0 +1,38 @@
+p {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.resultsContainer {
+}
+
+.quoteCard.MuiCard-root {
+    background-color: var(--core-1);
+    color: white;
+}
+
+.quoteCardItem {
+    flex-grow: 1;
+    flex-basis: 30%;
+}
+
+.quoteCardItem.airports {
+    flex-basis: 40%;
+}
+
+.priceText {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.airportText {
+    font-size: 1rem;
+}
+
+.backButton.MuiButton-contained {
+    background-color: var(--core-1);
+    color: white;
+    margin: 5%;
+}
+
+
