@@ -6,16 +6,21 @@ import Quote from "./Quote";
 import { Container } from "@material-ui/core";
 import "./ResultsPage.css";
 
-let port_number = null;
-if (process.env.NODE_ENV === "development") {
-    port_number = process.env.PORT_NUMBER; // development
-}
-else if (process.env.NODE_ENV === "deployment") {
-    port_number = process.env.PORT || 80; //production
-}
-const quote_query_url = "http://localhost:" + port_number + "/getLocation/";
+
 
 function SearchResults() {
+
+    let port_number = null;
+    let quote_query_url = "";
+    if (process.env.NODE_ENV === "development") {
+        port_number = 8080; // development
+        quote_query_url = "http://localhost:" + port_number + "/search?";
+    }
+    else if (process.env.NODE_ENV === "production") {
+        port_number = process.env.PORT || 80; //production
+        quote_query_url = "/search?";
+    }
+
 
     let history = useHistory();
 
@@ -85,8 +90,8 @@ function SearchResults() {
         return <div>Error: {error.message}</div>;
       } else if (!didSearchResultsLoad) {
         return <div>Loading...</div>;
-      } else if(quotes.length < 1) {
-        return <div>"No Quotes found." </div>
+      } else if(!quotes) {
+        return <div>No Quotes found. </div>
       }
         else {
         return (<div>

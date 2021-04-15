@@ -12,7 +12,7 @@ function StartingPage() {
   return (
     <div>
       <NavigationBar />
-      <header> <h1>Let AI do the heavy lifting for you. </h1></header>
+      <header> <h1> Know the best flight price, quickly. </h1></header>
       <Container className="startingPageMiddle">
         <SearchBarContainer />
       </Container>

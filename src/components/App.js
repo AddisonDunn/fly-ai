@@ -13,7 +13,6 @@ function App() {
       {/* <header className="App-header">
       </header>  */}
       {/* <StartingPage /> */}
-
       <Switch>
         <Route path="/search">
           <SearchPage />

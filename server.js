@@ -9,10 +9,14 @@ const cors = require('cors');
 
 let port_number = null;
 if(process.env.NODE_ENV === "development") {
-  port_number = process.env.PORT_NUMBER; // development
+  port_number = process.env.REACT_APP_PORT_NUMBER; // development
 }
-else if (process.env.NODE_ENV === "deployment") {
+else if (process.env.NODE_ENV === "production") {
   port_number = process.env.PORT || 80; //production
+  app.use(express.static(path.join(__dirname, 'build')))
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
 }
 
 const api_key = process.env.API_KEY;
@@ -22,11 +26,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
 
 
 app.get('/getLocation/:cityName', function(req, res) {
