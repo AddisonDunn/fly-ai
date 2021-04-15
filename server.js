@@ -3,8 +3,9 @@ require('dotenv').config(); // Needs to be first to load envs
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-var unirest = require("unirest");
-var cors = require('cors');
+const path = require('path')
+const unirest = require("unirest");
+const cors = require('cors');
 
 
 const port_number = process.env.PORT_NUMBER;
@@ -15,6 +16,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
+
 
 app.get('/getLocation/:cityName', function(req, res) {
   // res.write('<p>search results: </p>');
