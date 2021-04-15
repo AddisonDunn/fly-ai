@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 
 
 
-function SearchBarContainer() {
+function SearchBarContainer(props) {
 
   let history = useHistory();
   const [originID, setOriginID] = useState("");
@@ -51,9 +51,9 @@ function SearchBarContainer() {
 
         </Grid>
 
-        <Grid item className="ghost" />
-        
-        <Grid item className="dateField">
+        {props.isMobile?null:<Grid item className="ghost" />}
+
+        <Grid item className={"dateField " + (props.isMobile?" dateFieldMobile":"")}>
           <TextField
             id="date"
             label="Arrival date"

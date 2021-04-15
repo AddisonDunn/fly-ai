@@ -9,12 +9,20 @@ h1 {
 
 .startingPageMiddle {
     background-color: white;
-    margin: 2% 0%;
+    margin: 2% 10%;
     padding: 5%;
     background-image: url(https://i.imgur.com/oPNn9fZ.jpg);
     background-size: 100%;
     border-radius: 10px;
     background-position: center;
+    background-repeat: no-repeat;
+}
+
+.startingPageMiddle.startingPageMobile {
+  background-image: none;
+  background-color: var(--core-1);
+  padding: 15% 0 0 0;
+  /* margin: 0 -5%; */
 }
 
 .searchBar {
@@ -28,6 +36,11 @@ h1 {
     border-radius: 10px;
     flex-grow: 0;
     margin-bottom: 3%;
+    margin-top: 2%;
+}
+
+.dateField.MuiGrid-item.dateFieldMobile {
+  margin: 5% 20%;
 }
 
 .startingPageEnd {

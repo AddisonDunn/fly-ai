@@ -4,17 +4,20 @@ import Grid from '@material-ui/core/Grid';
 import "./core.css";
 import Container from '@material-ui/core/Container';
 import "./StartingPage.css";
-
+import { useMediaQuery } from 'react-responsive'
 
 
 
 function StartingPage() {
+
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' })
+
   return (
     <div>
       <NavigationBar />
-      <header> <h1> Know the best flight price, quickly. </h1></header>
-      <Container className="startingPageMiddle">
-        <SearchBarContainer />
+      <header> <h1 class> Know the best flight price, quickly. </h1></header>
+      <Container className={"startingPageMiddle" + (isMobile?" startingPageMobile":"")}>
+        <SearchBarContainer isMobile={isMobile}/>
       </Container>
       <Container className="startingPageEnd" >
         <Grid container direction="row"  justify="center" >
