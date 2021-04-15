@@ -7,8 +7,14 @@ const path = require('path')
 const unirest = require("unirest");
 const cors = require('cors');
 
+let port_number = null;
+if(process.env.NODE_ENV === "development") {
+  port_number = process.env.PORT_NUMBER; // development
+}
+else if (process.env.NODE_ENV === "deployment") {
+  port_number = process.env.PORT || 80; //production
+}
 
-const port_number = process.env.PORT_NUMBER;
 const api_key = process.env.API_KEY;
 const api_host = process.env.API_HOST;
 

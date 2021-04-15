@@ -6,6 +6,14 @@ import Quote from "./Quote";
 import { Container } from "@material-ui/core";
 import "./ResultsPage.css";
 
+let port_number = null;
+if (process.env.NODE_ENV === "development") {
+    port_number = process.env.PORT_NUMBER; // development
+}
+else if (process.env.NODE_ENV === "deployment") {
+    port_number = process.env.PORT || 80; //production
+}
+const quote_query_url = "http://localhost:" + port_number + "/getLocation/";
 
 function SearchResults() {
 
@@ -24,7 +32,7 @@ function SearchResults() {
             arrivalDate: history.location.state[3]
         }
         console.log(qs.stringify(query))
-        fetch("http://localhost:8080/search?" + qs.stringify(query), {
+        fetch(quote_query_url + qs.stringify(query), {
             method: "GET"
             })
             .then(res => res.json())

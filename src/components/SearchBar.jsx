@@ -6,6 +6,16 @@ import FlightLandIcon from '@material-ui/icons/FlightLand';
 import Grid from '@material-ui/core/Grid';
 import { useEffect, useState } from "react";
 
+let port_number = null;
+if (process.env.NODE_ENV === "development") {
+  port_number = process.env.PORT_NUMBER; // development
+}
+else if (process.env.NODE_ENV === "deployment") {
+  port_number = process.env.PORT || 80; //production
+}
+const location_query_url = "http://localhost:" + port_number + "/getLocation/";
+
+
 function SearchBar(props) {
 
   const [error, setError] = useState(null);
@@ -18,7 +28,7 @@ function SearchBar(props) {
     if(!searchText) {
       return;
     }
-      fetch("http://localhost:8080/getLocation/" + searchText)
+    fetch(location_query_url + searchText)
           .then(res => res.json())
           .then(
               (result) => {
